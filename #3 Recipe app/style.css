@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+/* import of fonts */
+
+* {
+    box-sizing: border-box;
+}
+
+/*
+.classname * {
+    --styling--
+}
+To select all the elements that are inside
+*/
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8edeb;
+    min-height: 100vh;
+}
+
+.mobile-container {
+    width: 400px;
+    background-color: #d8e2dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+
+
+
+h2 {
+    margin: 10px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+header input {
+    background-color: #f8edeb;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    height: 40px;
+    width: 250px;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+header button {
+    background-color: transparent;
+    color: #aaa;
+    font-size: 2rem;
+    border: none;
+    height: 20px;
+    margin-left: 10px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.fav-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    text-align: center;
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #eec0c6;
+    background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
+
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+li {
+    width: 100%
+}
+
+.fav-meals li {
+    width: 80px;
+    margin: 5px;
+}
+
+.fav-meals li img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    /* изображение будет обрезаться под заданные размеры */
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 2px solid #ffffff1a;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.random-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: first baseline;
+    background-color: white;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 360px;
+}
+
+.random-header {
+    position: absolute;
+    top: 8px;
+    background-color: white;
+    padding: 0 1rem;
+    border-radius: 5px;
+}
+
+.random-meal {
+    text-align: center;
+}
+
+.random-meal img {
+    width: 360px;
+    height: 240px; 
+    object-fit: cover;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+}
+
+.meal-name button {
+
+    background-color: transparent;
+    color: #aaa;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.meal-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+h4 {
+    margin: 0;
+    padding-left: 10px;
+}
+
+.fa-regular {
+    color: #e58c8a;
+}
+
+.heart-button {
+    margin-bottom: 5px;
+    /* margin-left: 270px; */
+    cursor: pointer;
+}
+
+.fa-solid {
+    color: #e58c8a;;
+}
