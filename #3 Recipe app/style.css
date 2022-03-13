@@ -143,8 +143,19 @@ li {
     position: absolute;
     top: 8px;
     background-color: white;
-    padding: 0 1rem;
     border-radius: 5px;
+    height: 35px;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.random-header:hover {
+    background-color: rgb(241, 241, 241);
+
 }
 
 .random-meal {
@@ -153,7 +164,7 @@ li {
 
 .random-meal img {
     width: 360px;
-    height: 240px; 
+    height: 240px;
     object-fit: cover;
     padding: 0;
     margin: 0;
@@ -190,5 +201,8 @@ h4 {
 }
 
 .fa-solid {
-    color: #e58c8a;;
+    color: #e58c8a;
+    ;
 }
+
+.ramdom-meal-btn {}
