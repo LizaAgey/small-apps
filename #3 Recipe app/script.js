@@ -25,7 +25,7 @@ function addRandomMeal(mealData) {
    <div class="meal-header">
         <button class="random-header" id="random-btn">Random meal</button> 
         <div class="random-meal">
-            <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" id="img-meal">
+            <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" id="img-meal" class="${mealData.idMeal}">
         </div>
         <div class="meal-name">
             <div class="random-name">
@@ -44,7 +44,8 @@ function addRandomMeal(mealData) {
     const randomBtn = document.getElementById("random-btn")
     randomBtn.addEventListener("click", getRandomMeal);
 
-    addOnClickActionForRandomImg()
+    let imgMainMeal = document.getElementById("img-meal")
+    imgMainMeal.addEventListener("click", addModalWindowMealInfo)
 
 }
 
@@ -87,7 +88,7 @@ function replaceExistingMeal(mealData) {
     meal.innerHTML = `
    <div class="meal-header">
         <div class="random-meal">
-            <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" id="img-meal">
+            <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" id="img-meal" class="${mealData.idMeal}">
         </div>
         <div class="meal-name">
             <div class="random-name">
@@ -102,6 +103,9 @@ function replaceExistingMeal(mealData) {
     </div>`
     meals.innerHTML = '';
     meals.appendChild(meal)
+
+    let imgMainMeal = document.getElementById("img-meal")
+    imgMainMeal.addEventListener("click", addModalWindowMealInfo)
 
 }
 
@@ -166,13 +170,17 @@ function addMealsToFav() {
             const favMeal = document.createElement('li');
 
             favMeal.innerHTML = `       
-             <img src="${mealData.strMealThumb}" alt="">
+             <img src="${mealData.strMealThumb}" alt="" onclick = "getAlert()">
             <span>${mealData.strMeal}</span>`
 
             listOfFavMeals.append(favMeal);
+
+
         })
 
     })
+
+
 
 }
 
@@ -194,23 +202,106 @@ async function getMealById(id) {
 // insert MEAL INFO modal window
 
 function addModalWindowMealInfo() {
-    const divForModalWindow = document.getElementById("modul-window-meal")
+    let mealID = document.getElementById("img-meal")
+    mealID = mealID.className
 
-    const mealInfoContainer = document.createElement("div");
-    mealInfoContainer.classList.add('meal-info-container')
+    let mealData = getMealById(mealID)
+    mealData = mealData.then(function (mealData) {
+        const divForModalWindow = document.getElementById("modul-window-meal")
 
-    mealInfoContainer.innerHTML = `
-    <div class="meal-info">
-        <img src="https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg" alt="">
-        <h4>Meal Title</h4>
-        <p>Lorem</p> //TODO: Ппомещаем сюда результат мапы
-    </div>`
+        const mealInfoContainer = document.createElement("div");
+        mealInfoContainer.classList.add('meal-info-container')
 
-    // divForModalWindow.append(mealInfoContainer)
+        mealInfoContainer.innerHTML = `
+            <div class="meal-info">
+                 <button class="close-btn">    
+                     <i class="fa-solid fa-xmark"></i>
+                  </button>
+                <img src="${mealData.strMealThumb}" alt="">
+                <h4>${mealData.strMeal}</h4>
+                <p>${mealData.strInstructions}</p> 
+            </div>`
 
+        divForModalWindow.append(mealInfoContainer)
+    })
 }
 
-function addOnClickActionForRandomImg() {
-    let imgMainMeal = document.getElementById("img-meal")
-    imgMainMeal.onclick = addModalWindowMealInfo()
+
+function mapIngredientsWithAmount(mealData) {
+    let arrayWithIngredients = []
+    for
+    mealData.forEach( key => {
+        if (key.includes("strIngredient")) {
+            arrayWithIngredients.push(key)
+        }
+        console.log(arrayWithIngredients)
+    })
+}
+
+let arrayCheck = {
+    "meals": [
+    {
+    "idMeal": "52973",
+    "strMeal": "Leblebi Soup",
+    "strDrinkAlternate": null,
+    "strCategory": "Vegetarian",
+    "strArea": "Tunisian",
+    "strInstructions": "Heat the oil in a large pot. Add the onion and cook until translucent.\r\nDrain the soaked chickpeas and add them to the pot together with the vegetable stock. Bring to the boil, then reduce the heat and cover. Simmer for 30 minutes.\r\nIn the meantime toast the cumin in a small ungreased frying pan, then grind them in a mortar. Add the garlic and salt and pound to a fine paste.\r\nAdd the paste and the harissa to the soup and simmer until the chickpeas are tender, about 30 minutes.\r\nSeason to taste with salt, pepper and lemon juice and serve hot.",
+    "strMealThumb": "https://www.themealdb.com/images/media/meals/x2fw9e1560460636.jpg",
+    "strTags": "Soup",
+    "strYoutube": "https://www.youtube.com/watch?v=BgRifcCwinY",
+    "strIngredient1": "Olive Oil",
+    "strIngredient2": "Onion",
+    "strIngredient3": "Chickpeas",
+    "strIngredient4": "Vegetable Stock",
+    "strIngredient5": "Cumin",
+    "strIngredient6": "Garlic",
+    "strIngredient7": "Salt",
+    "strIngredient8": "Harissa Spice",
+    "strIngredient9": "Pepper",
+    "strIngredient10": "Lime",
+    "strIngredient11": "",
+    "strIngredient12": "",
+    "strIngredient13": "",
+    "strIngredient14": "",
+    "strIngredient15": "",
+    "strIngredient16": "",
+    "strIngredient17": "",
+    "strIngredient18": "",
+    "strIngredient19": "",
+    "strIngredient20": "",
+    "strMeasure1": "2 tbs",
+    "strMeasure2": "1 medium finely diced",
+    "strMeasure3": "250g",
+    "strMeasure4": "1.5L",
+    "strMeasure5": "1 tsp ",
+    "strMeasure6": "5 cloves",
+    "strMeasure7": "1/2 tsp",
+    "strMeasure8": "1 tsp ",
+    "strMeasure9": "Pinch",
+    "strMeasure10": "1/2 ",
+    "strMeasure11": " ",
+    "strMeasure12": " ",
+    "strMeasure13": " ",
+    "strMeasure14": " ",
+    "strMeasure15": " ",
+    "strMeasure16": " ",
+    "strMeasure17": " ",
+    "strMeasure18": " ",
+    "strMeasure19": " ",
+    "strMeasure20": " ",
+    "strSource": "http://allrecipes.co.uk/recipe/43419/leblebi--tunisian-chickpea-soup-.aspx",
+    "strImageSource": null,
+    "strCreativeCommonsConfirmed": null,
+    "dateModified": null
+    }
+    ]
+    }
+
+
+
+
+//for FAV MEALS
+function getAlert() {
+    alert("hi")
 }
