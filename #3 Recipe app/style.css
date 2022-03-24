@@ -41,6 +41,7 @@ body {
 
 h2 {
     margin: 10px;
+
 }
 
 header {
@@ -85,7 +86,7 @@ header button {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: #eec0c6;
     background-image: linear-gradient(315deg, #eec0c6 0%, #e58c8a 74%);
-    max-height: 175px;
+    height: 175px;
     overflow: auto;
     width: 400px;
 
@@ -224,3 +225,52 @@ h4 {
 }
 
 .ramdom-meal-btn {}
+
+.meal-info-container {
+    width:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e083;
+    position: fixed;
+    z-index:100;
+    opacity: 100%;
+    
+    
+}
+
+.meal-info-container img {
+    width: 360px;
+    height: 240px;
+    object-fit: cover;
+    padding: 0;
+    margin: 20px;
+    border-radius: 5px;
+
+
+}
+
+.meal-info-container h4 {
+    text-align: center;
+  
+}
+.meal-info-container p {
+    margin: 20px;
+    text-align: justify;
+}
+
+.meal-info-container. {
+    opacity: 0%;
+    pointer-events: none;
+}
+
+
+.meal-info {
+    width:400px;
+    max-height:600px;
+    z-index:2;
+    background-color: #f8edeb;
+    border-radius: 10px;
+}
+

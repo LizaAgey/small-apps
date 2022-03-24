@@ -2,8 +2,8 @@ const meals = document.getElementById('meals')
 const globalMeals = document.getElementById('global-meals')
 let inputSearch = document.getElementById("text-to-search")
 const searchBtn = document.getElementById("search")
-// const heartBtn = document.getElementById("")
 
+//check LS for Favorite meals presence and add them to Favorite meals section
 addMealsToFav()
 
 // R A N D O M
@@ -43,6 +43,8 @@ function addRandomMeal(mealData) {
 
     const randomBtn = document.getElementById("random-btn")
     randomBtn.addEventListener("click", getRandomMeal);
+
+    addOnClickActionForRandomImg()
 
 }
 
@@ -104,7 +106,6 @@ function replaceExistingMeal(mealData) {
 }
 
 
-
 function changeIcon() {
     const heartBtn = document.querySelector(".change-icon")
     if (heartBtn.className == "fa-regular fa-heart change-icon") {
@@ -127,17 +128,9 @@ function addMealToLocalStorage() {
 
     localStorage.setItem("mealIds", JSON.stringify([...mealIds, new String(heartBtnID)]))
 
-    // let arrayWithIdsFromLS = JSON.parse(localStorage.getItem('mealIds')) // receive array with all IDs in LS
-
-    // arrayWithIdsFromLS.forEach((id) => {
-        const listOfFavMeals = document.getElementById("meal-ul-list")
-        listOfFavMeals.innerHTML = '';
-        addMealsToFav()
-
-    // });
-
-
-
+    const listOfFavMeals = document.getElementById("meal-ul-list")
+    listOfFavMeals.innerHTML = '';
+    addMealsToFav()
 
 }
 
@@ -147,8 +140,8 @@ function removeFromLS() {
 
     localStorage.setItem("mealIds", JSON.stringify(mealIds.filter((id) => id !== heartBtnID)));
     const listOfFavMeals = document.getElementById("meal-ul-list")
-        listOfFavMeals.innerHTML = '';
-        addMealsToFav()
+    listOfFavMeals.innerHTML = '';
+    addMealsToFav()
 
 }
 
@@ -157,20 +150,6 @@ function getMealsLS() {
 
     return mealIds === null ? [] : mealIds;
 }
-
-// GET MEAL by ID
-async function getMealById(id) {
-    const resp = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id
-    );
-
-    const respData = await resp.json();
-    const meal = respData.meals[0];
-    // console.log(meal)
-
-    return meal; //receive object with Meal data
-}
-
 
 // ADD  from LS to FAVORITES
 
@@ -184,7 +163,7 @@ function addMealsToFav() {
 
 
             const listOfFavMeals = document.getElementById("meal-ul-list")
-            let favMeal = document.createElement('li');
+            const favMeal = document.createElement('li');
 
             favMeal.innerHTML = `       
              <img src="${mealData.strMealThumb}" alt="">
@@ -197,10 +176,41 @@ function addMealsToFav() {
 
 }
 
+// GET MEAL by ID
+async function getMealById(id) {
+    const resp = await fetch(
+        "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id
+    );
 
-// const scrollContainer = document.querySelector("meal-ul-list");
+    const respData = await resp.json();
+    const meal = respData.meals[0];
+    // console.log(meal)
 
-// scrollContainer.addEventListener("wheel", (evt) => {
-//     evt.preventDefault();
-//     scrollContainer.scrollLeft += evt.deltaY;
-// })
+    return meal;
+}
+
+
+
+// insert MEAL INFO modal window
+
+function addModalWindowMealInfo() {
+    const divForModalWindow = document.getElementById("modul-window-meal")
+
+    const mealInfoContainer = document.createElement("div");
+    mealInfoContainer.classList.add('meal-info-container')
+
+    mealInfoContainer.innerHTML = `
+    <div class="meal-info">
+        <img src="https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg" alt="">
+        <h4>Meal Title</h4>
+        <p>Lorem</p> //TODO: Ппомещаем сюда результат мапы
+    </div>`
+
+    // divForModalWindow.append(mealInfoContainer)
+
+}
+
+function addOnClickActionForRandomImg() {
+    let imgMainMeal = document.getElementById("img-meal")
+    imgMainMeal.onclick = addModalWindowMealInfo()
+}
